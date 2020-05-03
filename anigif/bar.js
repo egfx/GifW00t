@@ -7,8 +7,8 @@ window.anigif_bar = {
         //resolve_mode: typeof(anigif_base_url)=="undefined"?"absolute_from_root":"absolute_from_remote",
         resolve_mode: "absolute_from_remote",
         
-        base_url: typeof(anigif_base_url)=="undefined"?getAbsoluteUrlPrefix() + "anigif/":anigif_base_url,
-        
+        //base_url: typeof(anigif_base_url)=="undefined"?getAbsoluteUrlPrefix() + "anigif/":anigif_base_url,
+        base_url: "https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif",
         record_delay: 3,
         
         buttons: ["record", "stop", "play", "config"],
