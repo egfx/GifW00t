@@ -97,8 +97,8 @@ GIFEncoder_WebWorker = function(options) {
         
     var finish_async = exports.finish_async = function finish_async(opt) {
         var self = this
-        var url = self.base_url + 'worker.js';
-        downloadString(self.base_url + 'worker.js', function(err, content) {
+        var url = 'https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif/jsgif2/worker.js';
+        downloadString('https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif/jsgif2/worker.js', function(err, content) {
             var content_working = "var base_url_injected='" + self.base_url + "';\r\n" + content;
             var blob = new Blob([content_working], {type: "text/javascript"})
             
