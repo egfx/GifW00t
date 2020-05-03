@@ -8,7 +8,7 @@ window.anigif_bar = {
         resolve_mode: "absolute_from_remote",
         
         //base_url: typeof(anigif_base_url)=="undefined"?getAbsoluteUrlPrefix() + "anigif/":anigif_base_url,
-        base_url: "https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif/",
+        base_url: "https://cdn.jsdelivr.net/gh/egfx/GifW00t@88b432b6a1ed808f18d3ef1e8215361b0201ec4c/anigif/",
         record_delay: 3,
         
         buttons: ["record", "stop", "play", "config"],
@@ -18,8 +18,8 @@ window.anigif_bar = {
             
             //document.querySelectorAll("[koo=zoo]")[0].src
             //window.anigif.options.base_url = self.base_url
-            window.anigif.options.base_url = "https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif/"
-            this.downloadHtml("https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif/bar.html", function(err, html) {
+            window.anigif.options.base_url = "https://cdn.jsdelivr.net/gh/egfx/GifW00t@88b432b6a1ed808f18d3ef1e8215361b0201ec4c/anigif/"
+            this.downloadHtml("https://cdn.jsdelivr.net/gh/egfx/GifW00t@88b432b6a1ed808f18d3ef1e8215361b0201ec4c/anigif/bar.html", function(err, html) {
                 
                 var div = document.createElement("div");
                 div.id = "anigif_wrapper";
