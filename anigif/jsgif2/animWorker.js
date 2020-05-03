@@ -1,4 +1,4 @@
-importScripts('/LZWEncoder.js', '/NeuQuant.js', '/GIFEncoder.js');      /* imports three scripts */
+importScripts('LZWEncoder.js', 'NeuQuant.js', 'GIFEncoder.js');      /* imports three scripts */
 
 self.onmessage = function(event) {
   //console.log("message!");
