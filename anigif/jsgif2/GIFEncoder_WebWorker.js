@@ -97,9 +97,10 @@ GIFEncoder_WebWorker = function(options) {
         
     var finish_async = exports.finish_async = function finish_async(opt) {
         var self = this
-        var url = 'https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif/jsgif2/worker.js';
-        downloadString('https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif/jsgif2/worker.js', function(err, content) {
-            var content_working = "var base_url_injected='" + self.base_url + "';\r\n" + content;
+        var url = self.base_url + 'worker.js';
+        downloadString('https://cdn.jsdelivr.net/gh/egfx/GifW00t@f44a383ac6ba21fbe752061d0d80f9bb2cb4208b/anigif/jsgif2/worker.js', function(err, content) {
+            //var content_working = "var base_url_injected='" + self.base_url + "';\r\n" + content;
+            var content_working = "var base_url_injected='https://cdn.jsdelivr.net/gh/egfx/GifW00t@f44a383ac6ba21fbe752061d0d80f9bb2cb4208b/anigif/jsgif2/';\r\n" + content;
             var blob = new Blob([content_working], {type: "text/javascript"})
             
             var url = null;
@@ -118,5 +119,3 @@ GIFEncoder_WebWorker = function(options) {
     exports.init()
     return exports;
 }
-
-
