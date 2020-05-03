@@ -106,11 +106,9 @@
                 .then(function (blobFrame) {
                     
                     if(!document.getElementById('someCanvasId')){
-                      var canv = document.createElement('canvas');
-                      canv.id = 'someCanvasId';
+                      var canvas = document.createElement('canvas');
+                      canvas.id = 'someCanvasId';
                     }
-
-                    var canvas = document.getElementById('someCanvasId');
 
                     HTMLCanvasElement.prototype.renderImage = function(blob, cb){
                       
@@ -240,11 +238,9 @@
                 .then(function (blobFrame) {
                     
                     if(!document.getElementById('otherCanvasId')){
-                      var canv = document.createElement('canvas');
-                      canv.id = 'otherCanvasId';
+                      var canvas = document.createElement('canvas');
+                      canvas.id = 'otherCanvasId';
                     }
-
-                    var canvas = document.getElementById('otherCanvasId');
 
                     HTMLCanvasElement.prototype.renderImage = function(blob, cb){
                       
