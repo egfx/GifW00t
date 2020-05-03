@@ -18,7 +18,7 @@
                 cores: 8,
                 ratio: 1,
                 quality: "Medium",
-                base_url: "",
+                base_url: "https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/",
                 fixedWidth: "",
                 period: "Online"
             };
