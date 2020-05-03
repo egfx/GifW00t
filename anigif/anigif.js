@@ -18,7 +18,7 @@
                 cores: 8,
                 ratio: 1,
                 quality: "Medium",
-                base_url: "https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/",
+                base_url: "",
                 fixedWidth: "",
                 period: "Online"
             };
@@ -110,7 +110,7 @@
 
                     var canvas = document.getElementById('someCanvasId');
 
-                    HTMLCanvasElement.prototype.renderImage = function(blob){
+                    HTMLCanvasElement.prototype.renderImage = function(blob, cb){
                       
                       var ctx = this.getContext('2d');
                       var img = new Image();
@@ -120,16 +120,18 @@
                       }
 
                       img.src = URL.createObjectURL(blob);
+                      cb();
                     };
 
-                    canvas.renderImage(blobFrame);
-                    
-                    self.resizeImage(canvas, self.options.ratio, function(err, canvas_small) {
-                        cba(null, canvas_small);    
-                        
-                        // cleanup
-                        canvas.remove();
+                    canvas.renderImage(blobFrame, function(){
+                        self.resizeImage(canvas, self.options.ratio, function(err, canvas_small) {
+                            cba(null, canvas_small);    
+                            
+                            // cleanup
+                            canvas.remove();
+                        });
                     });
+                    
             });
            },
         
@@ -243,7 +245,7 @@
 
                     var canvas = document.getElementById('otherCanvasId');
 
-                    HTMLCanvasElement.prototype.renderImage = function(blob){
+                    HTMLCanvasElement.prototype.renderImage = function(blob, cb){
                       
                       var ctx = this.getContext('2d');
                       var img = new Image();
@@ -253,15 +255,16 @@
                       }
 
                       img.src = URL.createObjectURL(blob);
+                      cb();
                     };
 
-                    canvas.renderImage(blobFrame);
-                    
-                    handleImage(canvas);
-                    self.frames[i].parentElement.removeChild(self.frames[i]);
-                    //cleanup
-                    canvas.remove();
-                    
+                    canvas.renderImage(blobFrame, function(){
+                       handleImage(canvas);
+                       self.frames[i].parentElement.removeChild(self.frames[i]);
+                       
+                       //cleanup
+                       canvas.remove();
+                    });
             });   
           }
         },
