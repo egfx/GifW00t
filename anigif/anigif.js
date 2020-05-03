@@ -102,12 +102,34 @@
                         })
            }
            else
-            window.html2canvas( [ self.el ], {
-                    onrendered: function(canvas) {
-                        self.resizeImage(canvas, self.options.ratio, function(err, canvas_small) {
-                            cba(null, canvas_small);    
-                        })
-                    }
+            domtoimage.toBlob(self.el)
+                .then(function (blobFrame) {
+                    
+                    var canv = document.createElement('canvas');
+                    canv.id = 'someCanvasId';
+
+                    var canvas = document.getElementById('someCanvasId');
+
+                    HTMLCanvasElement.prototype.renderImage = function(blob){
+                      
+                      var ctx = this.getContext('2d');
+                      var img = new Image();
+
+                      img.onload = function(){
+                        ctx.drawImage(img, 0, 0)
+                      }
+
+                      img.src = URL.createObjectURL(blob);
+                    };
+
+                    canvas.renderImage(blobFrame);
+                    
+                    self.resizeImage(canvas, self.options.ratio, function(err, canvas_small) {
+                        cba(null, canvas_small);    
+                        
+                        // cleanup
+                        canvas.remove();
+                    });
             });
            },
         
@@ -213,16 +235,35 @@
             document.body.appendChild(this.frames[i]);
             this.replaceSvgWithCanvas(this.frames[i]);
         
-            window.html2canvas( [ self.frames[i] ], {
-                onrendered: function(canvas) {
+            domtoimage.toBlob(self.frames[i])
+                .then(function (blobFrame) {
+                    
+                    var canv = document.createElement('canvas');
+                    canv.id = 'otherCanvasId';
+
+                    var canvas = document.getElementById('otherCanvasId');
+
+                    HTMLCanvasElement.prototype.renderImage = function(blob){
+                      
+                      var ctx = this.getContext('2d');
+                      var img = new Image();
+
+                      img.onload = function(){
+                        ctx.drawImage(img, 0, 0)
+                      }
+
+                      img.src = URL.createObjectURL(blob);
+                    };
+
+                    canvas.renderImage(blobFrame);
+                    
                     handleImage(canvas);
                     self.frames[i].parentElement.removeChild(self.frames[i]);
-                }
-                });    
+                    //cleanup
+                    canvas.remove();
+                    
+            });   
           }
-            
-            
-            
         },
         
        resizeImage: function(canvas, ratio, cba) {
