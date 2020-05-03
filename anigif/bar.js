@@ -16,7 +16,8 @@ window.anigif_bar = {
             var self = this;
             
             //document.querySelectorAll("[koo=zoo]")[0].src
-            window.anigif.options.base_url = self.base_url
+            //window.anigif.options.base_url = self.base_url
+            window.anigif.options.base_url = "https://cdn.jsdelivr.net/gh/egfx/GifW00t@master/anigif"
             this.downloadHtml(self.base_url + "bar.html", function(err, html) {
                 
                 var div = document.createElement("div");
