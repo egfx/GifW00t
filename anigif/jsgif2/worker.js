@@ -1,7 +1,7 @@
 
 
 //var base_url = typeof(base_url_injected)=="undefined"?"":base_url_injected;
-var base_url = 'https://cdn.jsdelivr.net/gh/egfx/GifW00t@7ae1c50c98a5d517d1435755e7ffd66cc6acf3ae/anigif/jsgif2/';
+var base_url = 'https://cdn.jsdelivr.net/gh/egfx/GifW00t@9aeef00df017e8d2de6ade64168e6bfaced7631c/anigif/jsgif2/';
 
 importScripts(base_url + 'GIFEncoder.js', base_url + 'LZWEncoder.js', base_url + 'NeuQuant.js', base_url + 'Demos/b64.js')
 
