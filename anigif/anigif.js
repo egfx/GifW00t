@@ -105,8 +105,10 @@
             domtoimage.toBlob(self.el)
                 .then(function (blobFrame) {
                     
-                    var canv = document.createElement('canvas');
-                    canv.id = 'someCanvasId';
+                    if(!document.getElementById('someCanvasId')){
+                      var canv = document.createElement('canvas');
+                      canv.id = 'someCanvasId';
+                    }
 
                     var canvas = document.getElementById('someCanvasId');
 
@@ -125,10 +127,7 @@
 
                     canvas.renderImage(blobFrame, function(){
                         self.resizeImage(canvas, self.options.ratio, function(err, canvas_small) {
-                            cba(null, canvas_small);    
-                            
-                            // cleanup
-                            canvas.remove();
+                            cba(null, canvas_small);
                         });
                     });
                     
@@ -240,8 +239,10 @@
             domtoimage.toBlob(self.frames[i])
                 .then(function (blobFrame) {
                     
-                    var canv = document.createElement('canvas');
-                    canv.id = 'otherCanvasId';
+                    if(!document.getElementById('otherCanvasId')){
+                      var canv = document.createElement('canvas');
+                      canv.id = 'otherCanvasId';
+                    }
 
                     var canvas = document.getElementById('otherCanvasId');
 
